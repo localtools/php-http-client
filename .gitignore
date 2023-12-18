@@ -1,0 +1,16 @@
+# php with composer
+
+# gitignore for php
+
+.idea
+vendor
+composer.lock
+composer.phar
+
+# phpunit
+*.cache
+
+# composer
+composer.phar
+/vendor/
+

@@ -1,0 +1,15 @@
+*.sh linguist-vendored
+*.cache linguist-vendored
+*.xml linguist-vendored
+
+*.blade linguist-language=php
+*.neon linguist-language=php
+*.php linguist-language=php
+*.php5 linguist-language=php
+*.phtml linguist-language=php
+*.inc linguist-language=php
+*.module linguist-language=php
+*.install linguist-language=php
+*.profile linguist-language=php
+*.test linguist-language=php
+*.info linguist-language=php
