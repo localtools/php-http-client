@@ -3,6 +3,7 @@ namespace PhpHttpClient\Concerns;
 
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Exception\GuzzleException;
+use PhpHttpClient\Exceptions\HttpClientException;
 use Psr\Http\Message\ResponseInterface;
 
 trait HttpBehavior
@@ -22,7 +23,13 @@ trait HttpBehavior
      */
     public function request(array $config = []): ResponseInterface
     {
-        return $this->getInstance()->request($config['method'], $config['url'], $config);
+        $merged = array_merge($this->options ?? [], $config);
+
+        try {
+            return $this->getInstance()->request($merged['method'], $merged['url'], $merged);
+        } catch (GuzzleException $e) {
+            throw new HttpClientException($e->getMessage(), (int) $e->getCode(), $e);
+        }
     }
 
     /**

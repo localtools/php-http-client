@@ -1,15 +1,22 @@
 <?php
 
 if (!function_exists('kindOf')) {
-    function kindOf($thing): bool
+    function kindOf($thing): string
     {
-        $str = gettype($thing);
-        return $str || ($str = get_class($thing)) || ($str = get_resource_type($thing)) || ($str = gettype($thing));
+        if (is_object($thing)) {
+            return get_class($thing);
+        }
+
+        if (is_resource($thing)) {
+            return get_resource_type($thing);
+        }
+
+        return gettype($thing);
     }
 }
 
 if (!function_exists('typeOfTest')) {
-    function typeOfTest($type): Closure
+    function typeOfTest(string $type): Closure
     {
         return function ($thing) use ($type) {
             return gettype($thing) === $type;

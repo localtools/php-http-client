@@ -12,3 +12,7 @@ it('should return true if the argument is a buffer', function () {
 it('should return the protocol of the url', function () {
     $this->assertEquals(parseProtocol('https://www.google.com'), 'https');
 });
+
+it('should return the type of the argument', function () {
+    $this->assertEquals('integer', kindOf(1));
+});
