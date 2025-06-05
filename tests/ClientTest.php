@@ -57,6 +57,15 @@ it('tests withDigestAuth method', function () {
     expect($result)->toBeInstanceOf(Client::class);
 });
 
+it('tests withJson method', function () {
+    $client = new Client('http://example.com');
+    $data = ['foo' => 'bar'];
+
+    $result = $client->withJson($data);
+
+    expect($result)->toBeInstanceOf(Client::class);
+});
+
 it('tests withQuery method with github api', function () {
     $client = new Client('https://api.github.com');
     $query = ['q' => 'php'];
